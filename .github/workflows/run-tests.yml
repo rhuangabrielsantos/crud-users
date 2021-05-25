@@ -1,0 +1,31 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 14.17.0
+          
+      - name: Install dependencies
+        uses: CultureHQ/actions-yarn@master
+        with:
+          args: install
+      - name: Run Tests
+        uses: CultureHQ/actions-yarn@master
+        with:
+          args: test
+      
