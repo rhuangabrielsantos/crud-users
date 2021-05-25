@@ -21,11 +21,8 @@ jobs:
           node-version: 14.17.0
           
       - name: Install dependencies
-        uses: CultureHQ/actions-yarn@master
-        with:
-          args: install
+        run: yarn install
+        
       - name: Run Tests
-        uses: CultureHQ/actions-yarn@master
-        with:
-          args: test
+        run: yarn test
       
